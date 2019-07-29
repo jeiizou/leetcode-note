@@ -64,4 +64,4 @@ var longestCommonPrefix = function(strs) {
     return str.join('') + '';
 };
 
-longestCommonPrefix(['12312323', '123123', '123123']);
+// longestCommonPrefix(['12312323', '123123', '123123']);
