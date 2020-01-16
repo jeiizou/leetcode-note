@@ -13,10 +13,35 @@ var generateParenthesis = function (n) {
     let stack = [];
     let count = n * 2;
 
-    for (let index = 0; index < array.length; index++) {
-        const element = array[index];
-        
-    }
-};
-// @lc code=end
+    let i = 0;
+    while (i < count) {
 
+    }
+
+};
+
+function bracketGenTree(node, stack, i, n) {
+    if (i > n) {
+        if (stack.length < 1) {
+            return node;
+        } else {
+            return false;
+        }
+    }
+
+    if (node === ")") {
+        if (stack > 0) {
+            stack--;
+        } else {
+            return false;
+        }
+    } else if (node === "(") {
+        stack++;
+    }
+
+    node.left = bracketGenTree(')', stack, i + 1, n);
+    node.right = bracketGenTree('(', stack, i + 1, n);
+
+    return node;
+}
+// @lc code=end
