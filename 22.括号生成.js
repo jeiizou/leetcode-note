@@ -9,39 +9,56 @@
  * @param {number} n
  * @return {string[]}
  */
+
 var generateParenthesis = function (n) {
     let stack = [];
-    let count = n * 2;
-
-    let i = 0;
-    while (i < count) {
-
+    let root = {
+        str: "(",
+        value: 1,
+        path: "(",
+        left: null,
+        right: null
     }
-
+    root.left = getLeaf("(", root, 2, n * 2, stack);
+    root.right = getLeaf(")", root, 2, n * 2, stack);
+    return stack;
 };
 
-function bracketGenTree(node, stack, i, n) {
-    if (i > n) {
-        if (stack.length < 1) {
-            return node;
-        } else {
-            return false;
+function getLeaf(type, root, d, td, stack) {
+    if (d > td) {
+        // console.log(root);
+        if (root.value === 0) {
+            let index = stack.indexOf(root.path);
+            if (index === -1) {
+                stack.push(root.path);
+            };
         }
+        return null;
     }
 
-    if (node === ")") {
-        if (stack > 0) {
-            stack--;
-        } else {
-            return false;
-        }
-    } else if (node === "(") {
-        stack++;
+    let node = {
+        str: type,
+        value: root.value,
+        path: root.path + type,
+        left: null,
+        right: null,
     }
 
-    node.left = bracketGenTree(')', stack, i + 1, n);
-    node.right = bracketGenTree('(', stack, i + 1, n);
-
+    if (type === "(") {
+        //left
+        node.value = root.value + 1;
+        node.left = getLeaf("(", node, d + 1, td, stack);
+        node.right = getLeaf(")", node, d + 1, td, stack);
+    } else {
+        //right
+        if (root.value < 1) {
+            return null;
+        } else {
+            node.value = root.value - 1;
+            node.left = getLeaf("(", node, d + 1, td, stack);
+            node.right = getLeaf(")", node, d + 1, td, stack);
+        }
+    }
     return node;
 }
 // @lc code=end
