@@ -17,16 +17,17 @@ var rotate = function (matrix) {
         for (let j = 0; j <= center; j++) {
             let vi = i - center;
             let vj = j - center;
-            console.log(i, j, vi, vj);
             /**
              * -+  ++
              * --  +-
              */
-            let temp = matrix[-vi + center][vj + center];
-            matrix[-vi + center][vj + center] = matrix[-vi + center][-vj + center] //   -+ = -- 
-            matrix[-vi + center][-vj + center] = matrix[+vi + center][-vj + center] //   -- = +-
-            matrix[vi + center][-vj + center] = matrix[vi + center][vj + center] //     +- = ++
-            matrix[vi + center][vj + center] = temp //   ++ = -+
+            let temp = matrix[vi + center][vj + center];
+            console.log(temp, vi + center, vj + center);
+            matrix[vi + center][vj + center] = matrix[-vj + center][vi + center];
+            console.log(-vj + center, i + center);
+            matrix[-vj + center][vi + center] = matrix[-vi + center][-vj + center];
+            matrix[-vi + center][-vj + center] = matrix[vj + center][vi + center];
+            matrix[vj + center][vi + center] = temp;
         }
 
     }
