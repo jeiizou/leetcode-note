@@ -11,10 +11,14 @@
  */
 var rotate = function (matrix) {
     let rank = matrix.length - 1;
+
+    if (rank < 1) {
+        return;
+    }
+
     let center = rank / 2;
-    console.log(center);
     for (let i = 0; i <= center; i++) {
-        for (let j = 0; j <= center; j++) {
+        for (let j = 0; j < center; j++) {
             let vi = i - center;
             let vj = j - center;
             /**
@@ -22,26 +26,21 @@ var rotate = function (matrix) {
              * --  +-
              */
             let temp = matrix[vi + center][vj + center];
-            console.log(temp, vi + center, vj + center);
+            // console.log(vi + center, vj + center);
+
             matrix[vi + center][vj + center] = matrix[-vj + center][vi + center];
-            console.log(-vj + center, i + center);
+            // console.log(-vj + center, vi + center);
+
             matrix[-vj + center][vi + center] = matrix[-vi + center][-vj + center];
-            matrix[-vi + center][-vj + center] = matrix[vj + center][vi + center];
-            matrix[vj + center][vi + center] = temp;
+            // console.log(-vi + center, -vj + center);
+
+            matrix[-vi + center][-vj + center] = matrix[vj + center][-vi + center];
+            // console.log(vj + center, -vi + center);
+
+            matrix[vj + center][-vi + center] = temp;
         }
 
     }
     return;
 };
 // @lc code=end
-
-let matrix =
-    [
-        [1, 2, 3, 4],
-        [5, 6, 7, 8],
-        [9, 10, 11, 12],
-        [13, 14, 15, 16]
-    ]
-
-rotate(matrix);
-console.log(matrix)
