@@ -10,8 +10,79 @@
  * @param {number} maxWidth
  * @return {string[]}
  */
-var fullJustify = function(words, maxWidth) {
+var fullJustify = function (words, maxWidth) {
 
+
+    let stack = {
+        words: [],
+        length: 0
+    }
+
+    let resWords = [];
+
+    for (let i = 0; i < words.length; i++) {
+        const word = words[i];
+
+        if (stack.length + word.length + stack.words.length - 1 >= maxWidth) {
+            // console.log(stack);
+            let res = maxWidth - stack.length;
+            let resLine = ''
+
+            if (stack.words.length < 2) {
+                resLine = stack.words[0] + (new Array(res)).fill(' ').join('');
+            } else {
+                let aver = parseInt(res / (stack.words.length - 1));
+                let aver_y = res % (stack.words.length - 1);
+                for (let j = 0; j < stack.words.length; j++) {
+                    resLine += stack.words[j];
+                    if (j < stack.words.length - 1) {
+                        resLine += (new Array(aver)).fill(' ').join('');
+                    }
+                    if (aver_y > 0) {
+                        resLine += " "
+                        aver_y--;
+                    }
+                }
+
+            }
+            resWords.push(resLine);
+            stack = {
+                words: [],
+                length: 0
+            }
+        }
+
+        stack.words.push(word);
+        stack.length += word.length;
+    }
+
+    // console.log(stack);
+    let curLine = '';
+    for (let k = 0; k < stack.words.length; k++) {
+        const word = stack.words[k];
+        curLine += word;
+        if (k < stack.words.length - 1) {
+            curLine += ' '
+        } else {
+            let resLength = maxWidth - curLine.length;
+            if (resLength > 0) {
+                curLine += (new Array(resLength)).fill(' ').join('');
+            }
+        }
+    }
+    resWords.push(curLine);
+
+
+    return resWords;
 };
+
+function geneLine(words) {
+
+}
 // @lc code=end
 
+let words = ["Science", "is", "what", "we", "understand", "well", "enough", "to", "explain",
+    "to", "a", "computer.", "Art", "is", "everything", "else", "we", "do"]
+let maxWidth = 20
+
+console.log(fullJustify(words, maxWidth));
