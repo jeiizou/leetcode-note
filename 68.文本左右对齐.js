@@ -11,26 +11,22 @@
  * @return {string[]}
  */
 var fullJustify = function (words, maxWidth) {
-
-
     let stack = {
         words: [],
         length: 0
     }
-
     let resWords = [];
-
     for (let i = 0; i < words.length; i++) {
         const word = words[i];
-
+        // 先进行判断
         if (stack.length + word.length + stack.words.length - 1 >= maxWidth) {
-            // console.log(stack);
             let res = maxWidth - stack.length;
             let resLine = ''
-
             if (stack.words.length < 2) {
+                 // 对单独的长单词进行特殊处理
                 resLine = stack.words[0] + (new Array(res)).fill(' ').join('');
             } else {
+                // 对一般情况进行分割
                 let aver = parseInt(res / (stack.words.length - 1));
                 let aver_y = res % (stack.words.length - 1);
                 for (let j = 0; j < stack.words.length; j++) {
@@ -45,18 +41,17 @@ var fullJustify = function (words, maxWidth) {
                 }
 
             }
+            // 重置line
             resWords.push(resLine);
             stack = {
                 words: [],
                 length: 0
             }
         }
-
         stack.words.push(word);
         stack.length += word.length;
     }
-
-    // console.log(stack);
+    // 处理最后一行
     let curLine = '';
     for (let k = 0; k < stack.words.length; k++) {
         const word = stack.words[k];
@@ -71,14 +66,8 @@ var fullJustify = function (words, maxWidth) {
         }
     }
     resWords.push(curLine);
-
-
     return resWords;
 };
-
-function geneLine(words) {
-
-}
 // @lc code=end
 
 let words = ["Science", "is", "what", "we", "understand", "well", "enough", "to", "explain",
