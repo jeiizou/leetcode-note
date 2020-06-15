@@ -10,7 +10,7 @@
  * @return {number}
  */
 var largestRectangleArea = function (heights) {
-    // 解法1 
+    // 解法1 : 暴力解法
     // let maxArea = 0;
     // let height = 1;
     // while (true) {
