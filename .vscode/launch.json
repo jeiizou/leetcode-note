@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/45.跳跃游戏-ii.js",
+            "program": "${workspaceFolder}/86.分隔链表.js",
             "skipFiles": [
                 "<node_internals>/**"
             ]
