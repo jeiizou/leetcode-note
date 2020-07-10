@@ -4,9 +4,6 @@
  * [94] 二叉树的中序遍历
  */
 
-const { func } = require("assert-plus");
-const { prepareStackTrace } = require("verror");
-
 // @lc code=start
 /**
  * Definition for a binary tree node.
@@ -70,7 +67,7 @@ var inorderTraversal = function (root) {
         }
     }
     return res;
-};
+}
 
 function readTree(root, arr) {
     if (!root) {
@@ -86,3 +83,5 @@ function readTree(root, arr) {
 }
 // @lc code=end
 
+
+module.exports = inorderTraversal
