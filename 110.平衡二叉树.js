@@ -22,6 +22,11 @@ var isBalanced = function (root) {
     let banlanceflag = true;
 
     const getHeight = (node, h) => {
+
+        if(!banlanceflag){
+            return h;
+        }
+
         if (!node) {
             return h;
         }
