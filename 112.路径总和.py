@@ -5,11 +5,11 @@
 #
 import collections
 
-class TreeNode:
-    def __init__(self, x):
-        self.val = x
-        self.left = None
-        self.right = None
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
 
 # @lc code=start
 # Definition for a binary tree node.
@@ -30,16 +30,20 @@ class Solution:
         que = collections.deque([(root, root.val)])
         while que:
             node, csum = que.popleft()
-            if csum == sum:
-                return True
+            if not node.left and not node.right:
+                if csum == sum:
+                    return True
+                continue
             if node.left:
-                que.append((node.left, node.val + csum))
+                que.append((node.left, node.left.val + csum))
             if node.right:
-                que.append((node.right, node.val + csum))
+                que.append((node.right, node.right.val + csum))
         return False
 # @lc code=end
 
-root = TreeNode(1)
-root.left = TreeNode(2)
-res = solution = Solution(root, 1)
-print(res)
+# root = TreeNode(1)
+# root.left = TreeNode(2)
+# root.right = TreeNode(3)
+# solution = Solution()
+# res = solution.hasPathSum(root, 3)
+# print(res)
