@@ -6,11 +6,11 @@
 
 # @lc code=start
 # Definition for a binary tree node.
-class TreeNode:
-    def __init__(self, x):
-        self.val = x
-        self.left = None
-        self.right = None
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
 
 
 class Solution:
@@ -35,10 +35,10 @@ class Solution:
 # @lc code=end
 
 
-root = TreeNode(1)
-root.left = TreeNode(2)
-root.right = TreeNode(3)
+# root = TreeNode(1)
+# root.left = TreeNode(2)
+# root.right = TreeNode(3)
 
-solution = Solution()
-res = solution.sumNumbers(root)
-print(res)
+# solution = Solution()
+# res = solution.sumNumbers(root)
+# print(res)
