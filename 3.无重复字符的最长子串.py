@@ -7,6 +7,7 @@
 # @lc code=start
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
+        # 定义快慢指针
         fast = low = 0
         charMap = {}
         maxLength = 0
