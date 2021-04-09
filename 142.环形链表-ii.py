@@ -15,7 +15,7 @@ class Solution:
     def detectCycle(self, head: ListNode) -> ListNode:
         if not head:
             return None
-        # 快慢执政
+        # 快慢指针
         fast = slow = head
         while fast:
             slow = slow.next
