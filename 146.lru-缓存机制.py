@@ -16,19 +16,23 @@ class DLinkedNode:
 class LRUCache:
 
     def __init__(self, capacity: int):
+        # 字典
         self.cache = dict()
         # 使用伪头部和伪尾部节点
         self.head = DLinkedNode()
         self.tail = DLinkedNode()
         self.head.next = self.tail
         self.tail.prev = self.head
+        # 容量上限
         self.capacity = capacity
+        # 当前容量
         self.size = 0
 
     def get(self, key: int) -> int:
         if key not in self.cache:
             return -1
         node = self.cache[key]
+        # 移动访问过的节点到列表的头部
         self.moveToHead(node)
         return node.value
 
