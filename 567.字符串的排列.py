@@ -50,11 +50,15 @@ class Solution:
     #     return False
 
     def checkInclusion(self, s1: str, s2: str) -> bool:
+        # 滑动窗口
         n, m = len(s1), len(s2)
         if n > m:
             return False
+        # 标志位
         cnt = [0] * 26
+        # a的下标位置
         aIdx = ord('a')
+        # 初始化s1中的已有的字符
         for i in range(0, n):
             cnt[ord(s1[i]) - aIdx] -= 1
         left = 0

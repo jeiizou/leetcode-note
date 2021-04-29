@@ -11,6 +11,7 @@ class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         n = len(nums)
         rtn = []
+        # 先排序
         nums.sort()
         # 枚举 a
         for i in range(0, n):

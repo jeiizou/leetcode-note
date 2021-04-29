@@ -12,6 +12,7 @@ class Solution:
         # 首先, 按照每个区域的开始位置的大小进行排序
         sorted_intervals = self.sort(intervals)
         res_intervals = [sorted_intervals[0]]
+        # 依次判断是否能合并
         for i in range(1, len(sorted_intervals)):
             if sorted_intervals[i][0] <= res_intervals[-1][1]:
                 res_intervals[-1] = [

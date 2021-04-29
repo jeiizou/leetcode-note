@@ -22,6 +22,7 @@ class Solution:
             if res_n <= 1:
                 ans += str(n_list[0])
                 break
+            # 计算在第几个
             num = math.ceil(res_k / self.getFact(res_n-1))
             y = res_k % self.getFact(res_n-1)
             ans += str(n_list[num - 1])
@@ -31,6 +32,7 @@ class Solution:
 
         return ans
 
+    # 获取阶乘数量
     def getFact(self, n: int) -> int:
         if n not in self.factorial_map:
             ans = n * self.getFact(n-1)

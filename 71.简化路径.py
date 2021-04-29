@@ -7,8 +7,10 @@
 # @lc code=start
 class Solution:
     def simplifyPath(self, path: str) -> str:
+        # 分割
         pathList = path.split('/')
         ans = []
+        # 栈
         for name in pathList:
             if not name:
                 continue

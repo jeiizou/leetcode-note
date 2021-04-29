@@ -11,6 +11,7 @@ class Solution:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
         n = len(isConnected)
         fa = [i for i in range(n)]
+        # 并查集
         def find(x):
             if x == fa[x]:
                 return x

@@ -9,6 +9,7 @@ from typing import List
 
 
 class Solution:
+    # 动态规划
     def findLengthOfLCIS(self, nums: List[int]) -> int:
         if not nums:
             return 0
