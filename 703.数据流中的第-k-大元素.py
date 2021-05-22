@@ -13,18 +13,21 @@ class KthLargest:
 
     def __init__(self, k: int, nums: List[int]):
         self.k = k
+        self.sortedSum = []
         for num in nums:
             self.add(num)
 
     def add(self, val: int) -> int:
         isMin = True
-        for i in range(0, len(self.sortedSum)):
+        arrlen = len(self.sortedSum)
+        for i in range(0, arrlen):
             if val > self.sortedSum[i]:
                 self.sortedSum.insert(i, val)
                 isMin = False
                 break
         if isMin:
             self.sortedSum.append(val)
+        self.sortedSum = self.sortedSum[0:self.k]
 
         if self.k <= len(self.sortedSum):
             return self.sortedSum[self.k - 1]
@@ -36,10 +39,10 @@ class KthLargest:
 # @lc code=end
 
 
-solution = KthLargest(1, [])
+solution = KthLargest(3, [4, 5, 8, 2])
 
-print(solution.add(-3))
-print(solution.add(-2))
-print(solution.add(-4))
-print(solution.add(0))
-print(solution.add(4))
+print(solution.add(3), solution.sortedSum)
+print(solution.add(5), solution.sortedSum)
+print(solution.add(10), solution.sortedSum)
+print(solution.add(9), solution.sortedSum)
+print(solution.add(4), solution.sortedSum)
